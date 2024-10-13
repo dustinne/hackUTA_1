@@ -1,0 +1,18 @@
+import matlab.engine
+import numpy as np
+
+eng = matlab.engine.start_matlab()
+
+t = matlab.double(np.linspace(0, 10, 100).tolist()) 
+happiness_scale = matlab.double(np.random.uniform(0, 10, 100).tolist())  
+social_activity = matlab.double(np.random.randint(0, 2, 100).tolist()) 
+
+fig2 = eng.plot_correlation_analysis(t, happiness_scale, social_activity)
+
+#eng.saveas(fig1, 'happiness_scale_plot.png', nargout=0)
+eng.saveas(fig2, 'correlation_plots.png', nargout=0)
+
+# Stop the MATLAB engine
+eng.quit()
+
+
